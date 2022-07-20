@@ -8,6 +8,6 @@ read sshUrl
 mkdir -p ~/Documents/Gitpod/$(echo $sshUrl | awk -F[\-\-] '{print $2}' | sed 's/.*/\u&/')
 
 umount ~/Documents/Gitpod/$(echo $sshUrl | awk -F[\-\-] '{print $2}' | sed 's/.*/\u&/')
-sshfs -o allow_other,default_permissions "${sshUrl}:/" ~/Documents/Gitpod/$(echo $sshUrl | awk -F[\-\-] '{print $2}' | sed 's/.*/\u&/')
+sshfs -o allow_other "${sshUrl}:/" ~/Documents/Gitpod/$(echo $sshUrl | awk -F[\-\-] '{print $2}' | sed 's/.*/\u&/')
 
 ssh ${sshUrl}
