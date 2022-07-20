@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cp gphelp ~/.local/bin/gphelp

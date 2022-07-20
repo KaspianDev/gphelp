@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Enter SSH URL: "
+
+read sshUrl
+
+# Change Documents/Gitpod to your liking, if the path doesn't exist it will be created.
+mkdir -p ~/Documents/Gitpod/$(echo $sshUrl | awk -F[\-\-] '{print $2}' | sed 's/.*/\u&/')
+
+umount ${confPath}$(echo $sshUrl | awk -F[\-\-] '{print $2}' | sed 's/.*/\u&/')
+sshfs -o allow_other,default_permissions "${sshUrl}:/" ~/Documents/Gitpod/$(echo $sshUrl | awk -F[\-\-] '{print $2}' | sed 's/.*/\u&/')
+
+ssh ${sshUrl}
